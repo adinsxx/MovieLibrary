@@ -46,7 +46,8 @@ namespace MovieLibrary
                 //Prompt user for movie title
                 Console.WriteLine("What it the name of the movie?");
                 string movieTitle = Console.ReadLine();
-                List<string> DuplicateMovies = MovieTitle.ConvertAll(duplicate => duplicate.ToLower());
+                HashSet<String> hashet = new HashSet<string>();
+                List<string> DuplicateMovies = (List<string>)MovieTitle.Where(e => !hashet.Add(e));
                 if (DuplicateMovies.Contains(movieTitle)){
                     logger.Info("This title is a duplicate: {Title}", movieTitle);
                 }
